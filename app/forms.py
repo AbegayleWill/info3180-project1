@@ -20,4 +20,4 @@ class PropertyForm(FlaskForm):
     location = StringField('Location', validators=[DataRequired()])
     photo = FileField('Photo', validators=[FileRequired(), FileAllowed(['jpg', 'png'])])
 
-
+ 
