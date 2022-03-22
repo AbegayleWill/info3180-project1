@@ -8,7 +8,13 @@ This file creates your application.
 from app import app
 from flask import render_template, request, redirect, url_for
 
+from flask import flash, session, abort, send_from_directory
 
+from app.forms import PropertyForm
+from app import db
+from app.models import Property
+import os
+from werkzeug.utils import secure_filename
 ###
 # Routing for your application.
 ###
@@ -22,8 +28,64 @@ def home():
 @app.route('/about/')
 def about():
     """Render the website's about page."""
-    return render_template('about.html', name="Mary Jane")
+    return render_template('about.html', name="Abegayle Williams")
 
+@app.route('/property/', methods=['GET', 'POST'])
+def new_property():
+    # Loads up the form
+    property_form = PropertyForm()
+
+    # Checks for method type and validatation
+    if request.method == 'POST':
+        if property_form.validate_on_submit():
+
+            # Collect the data from the form
+            p_title = property_form.p_title.data
+            description = property_form.p_description.data
+            rooms = property_form.rooms.data
+            bathrooms = property_form.bathrooms.data
+            price = property_form.price.data
+            p_type = property_form.p_type.data
+            location = property_form.location.data
+
+            photo = property_form.photo.data
+            filename = secure_filename(photo.filename)
+            photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+            # Create a Property object
+            my_property = Property(p_title, description, rooms, bathrooms, price, p_type, location, filename)
+            db.session.add(my_property)
+            db.session.commit()
+
+            # Redirects user to the Properties page
+            flash('Property Added Successfully!', 'success')
+            return redirect(url_for('all_properties'))
+    else:
+        flash_errors(property_form)
+
+    return render_template('property.html', form=property_form)
+
+
+@app.route('/properties/')
+def all_properties():
+    properties = Property.query.all()
+
+    return render_template('properties.html', properties=properties)
+
+
+@app.route('/property/<property_id>')
+def specific_property(property_id):
+    property_id = int(property_id)
+
+    # Locates the Property with the matching ID
+    my_property = Property.query.filter_by(id=property_id).first()
+
+    return render_template('single_property.html', property=my_property)
+
+@app.route('/uploads/<filename>')
+def get_uploaded_images(filename):
+    rootdir = os.getcwd()
+    return  send_from_directory(os.path.join(rootdir,app.config['UPLOAD_FOLDER']), filename)
 
 ###
 # The functions below should be applicable to all Flask apps.
