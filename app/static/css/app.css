@@ -1,3 +1,200 @@
 body {
     padding-top: 5rem;
+    background-color:#F5F5F5;
+}
+.page-header{
+    font-weight: bold;
+   font-size: 50px;
+}
+
+ .form-title {
+    font-weight: bold;
+   
+}
+
+.page-header {
+    margin: 20px 0px;
+}
+
+#property-form {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-right: 200px;
+    margin-bottom: 100px;
+}
+
+#property-form p {
+    padding: 0;
+    margin-bottom: 0;
+}
+
+#property-form .form-inputs {
+    padding: 5px;
+    border-radius: 5px;
+    width:80%;
+    border-color:lightgray;
+  
+
+}
+
+.left {
+    column-count: 2;
+    
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    border-collapse:collapse;
+}
+
+
+#property-form > button {
+    width: fit-content;
+    background-color: blue;
+    color: #ffffff;
+}
+
+/* Properties Page */
+
+.all-properties {
+   margin-left: 50px;
+   margin-right: 50px;
+
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: fit-content;
+    height: 100%;
+    box-shadow: 10px  #808080;
+}
+
+.property {
+   margin: 10px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 1px #a3a3a3;
+}
+
+.property img {
+   
+    width: 350px;
+    height: 250px;
+   
+}
+
+.property .property-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.property .property-location {
+    color: #808080;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    
+}
+
+.property .property-price {
+    border-radius: 15px;
+    background-color:cornflowerblue;
+    color: #ffffff;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: fit-content;
+}
+
+.property .go-to {
+    width: 100%;
+    padding-bottom: 0px;
+    background-color: rgb(105, 175, 134);
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+}
+
+/* Single Property Page */
+
+.single {
+    display: flex;
+    flex-direction: row;
+    width: 700px;
+    min-height: 300px;
+    background-color:#ffffff;
+    margin-left: 250px;
+   
+}
+
+ .p_left{
+    width: 45%;
+   
+}
+
+.p_left img{
+    width: 300px;
+    height:300px;
+}
+
+.right {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin: 15px 5px 15px 20px;
+}
+
+
+.right .pair {
+    columns: 2;
+    
+    
+}
+ .pair{
+     margin-left: -5px;
+ }
+
+.property-price {
+    padding: 5px;
+    background-color: cornflowerblue;
+    color: #ffffff;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+
+
+.property-type {
+    padding: 5px;
+    background-color:orange;
+    color: #ffffff;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.right button {
+    padding: 10px;
+    background-color: rgb(105, 175, 134);
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    width: fit-content;
+}
+
+/* .property-location, svg{
+    column:2;
+} */
+/* svg{
+    display: flex;
+    float: left;
+} */
+
+.loc{
+    display: flex;
+    margin-left: 12px;
+}
+
+.loc2{
+    display: flex;
 }
